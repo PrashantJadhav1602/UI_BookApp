@@ -1,0 +1,59 @@
+<br />
+<div class="tab">
+    <button class="tablinks" (click)="openReaderPage()">Reader Library</button>
+    <button class="tablinks" (click)="openSignUp()">Author SignUp</button>
+    <button class="tablinks" (click)="openLogin()">Author SignIn</button>
+</div>
+<div style="width:100%;">
+    <div style="float:left; width:40%;">
+        <h1>Search Book</h1>
+        <form [formGroup]="bookForm" style="border:1px solid #ccc">
+            <div class="container">
+
+                <label for="category"><b>Category:</b></label>
+                <input formControlName="category" type="text" placeholder="Enter category" name="category" required><br />
+
+                <label for="author"><b>Author:</b></label>
+                <input formControlName="author" type="text" placeholder="Enter author" name="author" required><br />
+
+                <label for="publisher"><b>Pubisher:</b></label>
+                <input formControlName="publisher" type="text" placeholder="Enter publisher" name="publisher" required><br />
+
+                    <label for="price"><b>Price:</b></label>
+                <input formControlName="price" type="text" placeholder="Enter price" name="price"
+                    required><br />
+                <!-- <label for="releaseDate"><b>Release Date:</b></label>
+                <input formControlName="releaseDate" type="date" name="releaseDate" required><br /> -->
+
+
+                <div class="clearfix">
+                    <button type="reset" class="cancelbtn">Clear</button>
+                    <button [disabled]="bookForm.invalid" type="submit" (click)="searchBook()">Search</button>
+                    <p *ngIf="bookForm.invalid">Error: Form is invalid</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="float:left; width:60%; text-align: center;">
+        <h1>Book Records</h1>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Price</th>
+                <th>Release Date</th>
+                <th>Subscribe Book</th>
+            </tr>
+            
+            <tr *ngFor="let b of books">
+                <td>{{b.title}}</td>
+                <td>{{b.authorId}}</td>
+                <td>{{b.publisher}}</td>
+                <td>{{b.price}}</td>
+                <td>{{b.publishDate}}</td>
+                <td><input type="button" value="Buy" (click)="buyBook(b.bookId)"></td>
+            </tr>
+        </table>
+    </div>
+</div>

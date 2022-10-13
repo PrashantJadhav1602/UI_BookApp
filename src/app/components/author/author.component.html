@@ -1,0 +1,64 @@
+<button class="backButton" (click)="homeButton()"> Home </button>
+<button class="backButton" (click)="logout()"> LogOut </button>
+<button class="viewBooksButton" (click)="viewAuthorBooks()"> My Books </button>
+
+<div style="width:100%;">
+  <div style="float:left; width:40%;">
+    <h1>Create Book</h1>
+    <form [formGroup]="createForm" style="border:1px solid #ccc">
+      <div class="container">
+
+        <label for="authorId"><b>Author Id:</b></label>
+        <input formControlName="authorId" type="text" name="authorId" required [disabled]="true"><br />
+
+        <label for="title"><b>Title:</b></label>
+        <input formControlName="title" type="text" placeholder="Enter title" name="title" required><br />
+
+        <label for="category"><b>Category:</b></label>
+        <input formControlName="category" type="text" placeholder="Enter category" name="category" required><br />
+
+        <label for="publisher"><b>Pubisher:</b></label>
+        <input formControlName="publisher" type="text" placeholder="Enter publisher" name="publisher" required><br />
+
+        <label for="price"><b>Price:</b></label>
+        <input formControlName="price" type="text" placeholder="Enter price" name="price" required><br />
+
+        <label for="block"><b>Active:</b></label>
+        <input formControlName="block" type="text" placeholder="Enter block status" name="block" required><br />
+
+        <label for="publishDate"><b>Publish Date:</b></label>
+        <input formControlName="publishDate" type="date" placeholder="Enter publish_date" name="publishDate" required><br />
+
+        <div class="clearfix">
+          <button type="reset" class="cancelbtn">Clear</button>
+          <button type="submit" (click)="saveBook()">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div style="float:right; width:60%; text-align: center">
+    <h1>Book Records</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Price</th>
+        <th>Release Date</th>
+        <th>Block</th>
+        <th>can Block Inblock</th>
+      </tr>
+
+      <tr *ngFor="let b of books">
+        <td>{{b.title}}</td>
+        <td>{{b.authorId}}</td>
+        <td>{{b.publisher}}</td>
+        <td>{{b.price}}</td>
+        <td>{{b.publishDate}}</td>
+        <td>{{b.block}}</td>
+        <td><input type="button" value="Update" (click)="updateBook(b.bookId)"></td>
+      </tr>
+    </table>
+
+  </div>
+</div>

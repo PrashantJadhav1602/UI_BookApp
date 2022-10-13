@@ -1,0 +1,53 @@
+
+<h1>Welcome to Reader Place</h1>
+<button class ="backButton" (click)="homeButton()"> Home </button>
+<h3>Select search Option</h3>
+<div style="width:100%;">
+    <div style="float:left; width:40%;">
+<form [formGroup]="readerForm">
+    <input  type="radio" 
+            name="readerOption" 
+            (click)="toggle()" 
+            checked="checked" >
+    <label>E-mail Id :  </label>
+    <input formControlName="emailId" type="text" [disabled]="textBoxDisabledemail">
+
+    <input type="radio" 
+            name="readerOption" 
+            (click)="toggle()" >
+    <label>Subscription Id :  </label>
+    <input [disabled]="textBoxDisabledsub" formControlName="subscriptionId"type="text" >
+
+    <input [disabled]="readerForm.invalid" type="button" value="Search"(click)="searchBooks()" />
+</form>
+</div>
+<div style="float:right; width:40%; text-align:center;">
+    <h1>Book Records</h1>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Price</th>
+                <th>Release Date</th>
+                <th>Read Book</th>
+                <th>UnSubscribe</th>
+            </tr>
+            
+            <tr *ngFor="let b of books">
+                <td>{{b.title}}</td>
+                <td>{{b.authorId}}</td>
+                <td>{{b.publisher}}</td>
+                <td>{{b.price}}</td>
+                <td>{{b.publishDate}}</td>
+                <td><input type="button" value="Read" (click)="openModal()" mat-mini-fab></td>
+                <td><input type="button" value="Return" (click)="UnSubscribeBook(b)"></td>
+            </tr>
+        </table>
+</div>
+</div>
+
+
+
+
+

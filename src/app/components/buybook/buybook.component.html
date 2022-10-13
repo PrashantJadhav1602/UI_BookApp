@@ -1,0 +1,22 @@
+<button class ="backButton" (click)="homeButton()"> Home </button>
+
+<h1>Buy Book</h1>
+        <form [formGroup]="buyForm" style="border:1px solid #ccc">
+            <div class="container">
+
+                <label for="bookId"><b>Book Id:</b></label>
+                <input formControlName="bookId" type="text" placeholder="Enter bookId" name="bookId" required ><br />
+
+                <label for="readerName"><b>Reader Name:</b></label>
+                <input formControlName="readerName" type="text" placeholder="Enter readerName" name="readerName" required><br />
+
+                <label for="readerEmailId"><b>Reader EmailId:</b></label>
+                <input formControlName="readerEmailId" type="text" placeholder="Enter readerEmailId" name="readerEmailId" required><br />
+
+
+                <div class="clearfix">
+                    <button type="reset" class="cancelbtn">Clear</button>
+                    <button [disabled]="buyForm.invalid" type="submit" (click)="saveSubscribedBook()">Buy</button>
+                </div>
+            </div>
+        </form>
