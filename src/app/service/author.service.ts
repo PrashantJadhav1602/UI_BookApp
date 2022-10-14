@@ -36,4 +36,17 @@ export class AuthorService {
     console.log(this.http.post(this.url+"/"+book.authorId+"/books",book));
     return this.http.post(this.url+"/"+book.authorId+"/books",book);
   }
+
+  updateAuthorBook(book: BookResponse){
+    console.log("book to Update = > "+book.block); 
+    if(book.block == false){
+      console.log("book.block = > "+book.block);
+      book.block = true;
+    }else{
+      console.log("book.block = > "+book.block);
+      book.block = false;
+    }
+    console.log(this.http.put(this.url+"/"+book.authorId+"/books/"+book.bookId,book));
+    return this.http.put(this.url+"/"+book.authorId+"/books/"+book.bookId,book);
+  }
 }

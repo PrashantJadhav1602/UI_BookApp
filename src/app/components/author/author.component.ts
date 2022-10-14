@@ -12,6 +12,7 @@ import { AuthorService } from 'src/app/service/author.service';
 export class AuthorComponent {
 
   books:Array<BookResponse> = [];
+  bookResponse:any;
   createForm:FormGroup;
   authorId:any;
 
@@ -68,7 +69,23 @@ export class AuthorComponent {
       })
   }
 
-  updateBook(bookId:any)
-  {}
+  updateBook(book:any)
+  {
+      this._authorservice.updateAuthorBook(book)
+        .subscribe(
+        {
+          next: (res:any) => {
+            console.log(res);
+            this.bookResponse = res; 
+            alert("Block status updated Successfully !!")
+            this.viewAuthorBooks();
+          },
+          error:(err:any) =>{
+            console.log(err)
+            alert("Failed to updated block status !!")
+          }
+        }
+      )
+  }
 
 }

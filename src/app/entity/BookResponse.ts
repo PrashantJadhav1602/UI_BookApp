@@ -6,6 +6,6 @@ export interface BookResponse{
     publishDate:string,
     publisher:string,
     price:number,
-    block:string
+    block:boolean
 
 }
