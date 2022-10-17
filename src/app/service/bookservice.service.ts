@@ -37,7 +37,7 @@ export class BookserviceService {
       console.log("queryParam = > "+queryParam.get("publisher"));
       console.log("queryParam = > "+queryParam.get("category"));
 
-      this.searchUrl= this.url+"/search?author=1&price=777&publisher=All&category=Alpha"
+      this.searchUrl= this.url+"/search?author="+book.author+"&price="+book.price+"&publisher="+book.publisher+"&category="+book.category;
       console.log("url = > "+this.searchUrl);
           
       return this.http.get(this.searchUrl

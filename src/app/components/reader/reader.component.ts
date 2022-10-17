@@ -100,7 +100,7 @@ export class ReaderComponent{
               alert("Can't be Refund now. 24 hours finished.")
             }else{
             this.searchBooks();
-            alert("Successfullt Book Returned. Unsubscribed !!")
+            alert("Successfully Book Returned. Unsubscribed !!")
             }
         },
         error: (err:any)=>{
